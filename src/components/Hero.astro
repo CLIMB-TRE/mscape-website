@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const { src = '/dna.png' } = Astro.props
+---
+
+<section class="hero my-1">
+<img src={src} alt="" decoding="async" />
+</section>
+
+<section class="hero my-10">
+  <div class="container">
+    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
+      <div class="flex flex-col items-center gap-8 md:items-start">
+        <h1 class="text-center text-6xl md:text-left lg:text-6xl">
+          <slot><span class="text-gradient"></span>Metagenomics Surveillance, Collaboration & Analysis Programme</slot>
+        </h1>
+        <div class="flex flex-col gap-3 min-[500px]:flex-row">
+          <!-- <a class="button has-icon" href="https://github.com/markteekman/accessible-astro-starter">
+            <Icon name="ion:star-outline" />
+            Star on GitHub
+          </a> -->
+          <a
+            class="button has-icon color-secondary"
+            href="https://climb-tre.github.io/"
+          >
+            <Icon name="ion:bookmark-outline" />
+            Read the Documentation
+          </a>
+        </div> 
+      </div>
+      <!-- <img class="hidden lg:block" src={src} alt="" decoding="async" /> -->
+      <div class="text-center md:text-left text-xl">
+        <ul>
+        <li>
+          Pathogen-agnostic clinical surveillance can improve biosecurity through the detection of novel, emerging and unexpected infection threats. Whilst there are numerous examples of pathogen detection and, to a lesser extent, discovery using pathogen-agnostic techniques such as metagenomic sequencing, at present there is no systematic surveillance based on this approach.
+        </li>
+        <li>
+          In this protocol we link the network of clinical and research laboratories already undertaking pathogen-agnostic diagnostics on respiratory and imported fever samples into a single pilot for pathogen-agnostic surveillance.
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .text-gradient {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-500));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :global(.darkmode .text-gradient) {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-400));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
