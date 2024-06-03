@@ -35,7 +35,7 @@ function Footer() {
     <Navbar bg="black" variant="dark" expand="lg" fixed="bottom">
       <Container>
         <Image
-          src="src/assets/uob_light.png"
+          src="src/assets/uob.png"
           alt="mSCAPE.png"
           style={{ height: "5vh" }}
         />
