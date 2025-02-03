@@ -2,7 +2,7 @@
   "name": "mscape-website",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://CLIMB-TRE.github.io/mscape-website/",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
