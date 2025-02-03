@@ -5,6 +5,9 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UKHSALogo from "./assets/ukhsa.png";
+import UOBLogo from "./assets/uob.jpg";
+import UOELogo from "./assets/uoe.png";
 import "./App.css";
 
 function Logos() {
@@ -12,21 +15,13 @@ function Logos() {
     <Container>
       <Row className="align-items-center">
         <Col>
-          <Image src="src/assets/ukhsa.png" alt="UKHSA Logo" fluid />
+          <Image src={UKHSALogo} alt="UKHSA Logo" fluid />
         </Col>
         <Col>
-          <Image
-            src="src/assets/uob.jpg"
-            alt="University of Birmingham Logo"
-            fluid
-          />
+          <Image src={UOBLogo} alt="University of Birmingham Logo" fluid />
         </Col>
         <Col>
-          <Image
-            src="src/assets/uoe.png"
-            alt="University of Edinburgh Logo"
-            fluid
-          />
+          <Image src={UOELogo} alt="University of Edinburgh Logo" fluid />
         </Col>
       </Row>
     </Container>
@@ -54,14 +49,18 @@ function Section(props: { title: string; children: React.ReactNode }) {
   );
 }
 
+function Objective(props: { children: React.ReactNode }) {
+  return <ListGroup.Item className="py-3">{props.children}</ListGroup.Item>;
+}
+
 function PressRelease(props: { date: string; title: string; url: string }) {
   return (
-    <Container>
+    <ListGroup.Item className="py-3">
       <h6>
         <a href={props.url}>{props.title}</a>
       </h6>
       <span className="text-muted">{props.date}</span>
-    </Container>
+    </ListGroup.Item>
   );
 }
 
@@ -71,7 +70,7 @@ function App() {
       <Stack gap={3}>
         <Logos />
         <Title />
-        <Section title="About">
+        <Section title="Overview">
           <p>
             The Metagenomics Surveillance Collaboration and Analysis Programme
             (mSCAPE), is one of the key initiatives underpinning the delivery of
@@ -114,51 +113,47 @@ function App() {
         <Section title="Objectives">
           <p>By the end of the pilot, mSCAPE will have:</p>
           <ListGroup numbered>
-            <ListGroup.Item>
+            <Objective>
               <b>Established a data sharing platform</b> (mSCAPE.CLIMB) on
               MRC-CLIMB Data Infrastructure with safe anonymisation, information
               governance and data management suitable for metagenomic data,
               including any trusted research environment function.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </Objective>
+            <Objective>
               <b>Trialled the feasibility of a networked surveillance system</b>{" "}
               for generating and monitoring timely and actionable pathogen
               agnostic data.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </Objective>
+            <Objective>
               <b>Evaluated the performance characteristics</b> of such a system
               by comparison to conventional detections and trends identified
               through existing surveillance.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </Objective>
+            <Objective>
               <b>Exercised the system using artificial constructs</b> of novel
               pathogens to determine sensitivity and specificity of approach on
               a background of normal cases.
-            </ListGroup.Item>
-            <ListGroup.Item>
+            </Objective>
+            <Objective>
               <b>
                 Designed sampling frameworks for pathogen-agnostic surveillance
               </b>{" "}
               of respiratory, emerging, and imported infections.
-            </ListGroup.Item>
+            </Objective>
           </ListGroup>
         </Section>
         <Section title="Press Releases">
           <ListGroup>
-            <ListGroup.Item>
-              <PressRelease
-                date="30th January 2025"
-                title="UKHSA launches new metagenomic surveillance for health security"
-                url="https://www.gov.uk/government/news/ukhsa-launches-new-metagenomic-surveillance-for-health-security"
-              />
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <PressRelease
-                date="5th November 2024"
-                title="UK to create world-first 'early warning system' for pandemics"
-                url="https://www.gov.uk/government/news/uk-to-create-world-first-early-warning-system-for-pandemics"
-              />
-            </ListGroup.Item>
+            <PressRelease
+              date="30th January 2025"
+              title="UKHSA launches new metagenomic surveillance for health security"
+              url="https://www.gov.uk/government/news/ukhsa-launches-new-metagenomic-surveillance-for-health-security"
+            />
+            <PressRelease
+              date="5th November 2024"
+              title="UK to create world-first 'early warning system' for pandemics"
+              url="https://www.gov.uk/government/news/uk-to-create-world-first-early-warning-system-for-pandemics"
+            />
           </ListGroup>
         </Section>
       </Stack>
