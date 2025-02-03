@@ -1,46 +1,35 @@
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import { Nav } from "react-bootstrap";
 import Stack from "react-bootstrap/Stack";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-function Header() {
+function Logos() {
   return (
-    <Navbar expand="lg">
-      <Container fluid>
-        <Navbar.Brand>
+    <Container>
+      <Row className="align-items-center">
+        <Col>
+          <Image src="src/assets/ukhsa.png" alt="UKHSA Logo" fluid />
+        </Col>
+        <Col>
           <Image
-            src="src/assets/mSCAPE.png"
-            alt="mSCAPE.png"
-            style={{ height: "10vh" }}
+            src="src/assets/uob.jpg"
+            alt="University of Birmingham Logo"
+            fluid
           />
-        </Navbar.Brand>
-        <Container>
-          <Stack direction="horizontal" gap={3} className="float-end">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#news">News</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-          </Stack>
-        </Container>
-      </Container>
-    </Navbar>
-  );
-}
-
-function Footer() {
-  return (
-    <Navbar bg="black" variant="dark" expand="lg" fixed="bottom">
-      <Container>
-        <Image
-          src="src/assets/uob.png"
-          alt="mSCAPE.png"
-          style={{ height: "5vh" }}
-        />
-      </Container>
-    </Navbar>
+        </Col>
+        <Col>
+          <Image
+            src="src/assets/uoe.png"
+            alt="University of Edinburgh Logo"
+            fluid
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
@@ -48,10 +37,9 @@ function Title() {
   return (
     <Container>
       <h1>mSCAPE</h1>
-      <h4 style={{ color: "grey" }}>
-        metagenomics Surveillance Collaboration and Analysis Programme
+      <h4 className="text-muted">
+        The Metagenomics Surveillance Collaboration and Analysis Programme
       </h4>
-      <hr style={{ color: "#e40046", border: "solid 2px", opacity: "1" }} />
     </Container>
   );
 }
@@ -60,81 +48,121 @@ function Section(props: { title: string; children: React.ReactNode }) {
   return (
     <Container>
       <h4>{props.title}</h4>
+      <hr style={{ color: "#e40046", border: "solid 2px", opacity: "1" }} />
       <p>{props.children}</p>
+    </Container>
+  );
+}
+
+function PressRelease(props: { date: string; title: string; url: string }) {
+  return (
+    <Container>
+      <h6>
+        <a href={props.url}>{props.title}</a>
+      </h6>
+      <span className="text-muted">{props.date}</span>
     </Container>
   );
 }
 
 function App() {
   return (
-    <form className="mSCAPE" autoComplete="off">
-      <Stack gap={2}>
-        <Header />
+    <Container className="mSCAPE py-5 w-50">
+      <Stack gap={3}>
+        <Logos />
         <Title />
-        <Section title="UK Health Security Agency Strategy">
+        <Section title="About">
           <p>
-            In January 2024, the UK Health Security Agency (UKHSA) published its{" "}
+            The Metagenomics Surveillance Collaboration and Analysis Programme
+            (mSCAPE), is one of the key initiatives underpinning the delivery of
+            the UKHSA{" "}
             <a href="https://assets.publishing.service.gov.uk/media/65aff68ef2718c000dfb1bd8/Pathogen_Genomics_Strategy_2024.pdf">
               Pathogen Genomics Strategy
             </a>
-            , which outlines our investment in pathogen genomics to prepare for
-            and respond to infectious public health threats. To deliver the
-            strategy we will integrate genomics into every aspect of infectious
-            disease control, prioritising 3 areas where we know that pathogen
-            genomics can have a significant public health impact:
+            , and has been in development since March 2022.
           </p>
-          <ul>
-            <li>
-              <b>antimicrobial resistance</b>
-            </li>
-            <li>
-              <b>emerging infections and biosecurity</b>
-            </li>
-            <li>
-              <b>vaccine-preventable diseases and elimination programmes</b>
-            </li>
-          </ul>
           <p>
-            The Pathogen Genomics strategy sets out how UKHSA will maximise the
-            benefit of pathogen genomics for public health over the next 5
-            years, through a single co-ordinated programme in collaboration with
-            the NHS, academic partners, industry and devolved administrations.
+            Led by UKHSA, it is a collaborative initiative involving a
+            consortium of NHS and academic partners including the University of
+            Birmingham, University of Edinburgh, and the NHS genomic network of
+            excellence for Severe presentation of infectious disease, led by
+            Guys and St. Thomas' NHS Trust.
           </p>
-        </Section>
-        <Section title="The mSCAPE Programme">
           <p>
-            mSCAPE has been established as a key programme of work to support
-            the <i>emerging infections and biosecurity</i> area of the strategy.
-            It is a collaborative research project with principal investigators
-            Dr Meera Chand, UKHSA Deputy director for emerging infections and
-            clinical lead for the UKHSA genomics programme, and Professor
-            Nicholas Loman [XXXXX]. The study protocol was approved by the
-            Research Ethics and Governance Group (REGG) on XX. It aims to link
-            the network of clinical and research laboratories undertaking or
-            developing pathogen-agnostic diagnostics into a single pilot for
-            pathogen-agnostic surveillance.
-          </p>{" "}
+            mSCAPE is a pilot surveillance network trialling the use of
+            metagenomic data for public health surveillance and pathogen
+            analysis. It takes anonymous pathogen data from multiple labs that
+            are using metagenomics for diagnosis - including those in the NHS -
+            and analyses it at a national level to monitor trends, epidemiology
+            and pathogen emergence at speed.
+          </p>
           <p>
-            {" "}
             Pathogen-agnostic clinical surveillance can improve biosecurity
             through the detection of novel, emerging and unexpected infection
             threats. Whilst there are numerous examples of pathogen detection
             and, to a lesser extent, discovery using pathogen-agnostic
             techniques such as metagenomic sequencing, at present there is no
-            systematic surveillance based on this approach.{" "}
+            systematic surveillance based on this approach.
           </p>
-        </Section>
-        <Section title="Data platform, the MRC-CLIMB model">
           <p>
-            The surveillance pilot network will be hosted on MRC-CLIMB is a
-            progression from the successful partnership and use of the
-            environment during the SARS-CoV-2 pandemic. [Leveraging successful
-            partnership and genomics platform..]
+            The principal investigators are Dr Meera Chand, UKHSA Deputy
+            director for emerging infections and clinical lead for the UKHSA
+            genomics programme, and Professor Nicholas Loman from the University
+            of Birmingham, academic Lead for the CLIMB-BIG-DATA project.
           </p>
         </Section>
-        <Footer />
+        <Section title="Objectives">
+          <p>By the end of the pilot, mSCAPE will have:</p>
+          <ListGroup numbered>
+            <ListGroup.Item>
+              <b>Established a data sharing platform</b> (mSCAPE.CLIMB) on
+              MRC-CLIMB Data Infrastructure with safe anonymisation, information
+              governance and data management suitable for metagenomic data,
+              including any trusted research environment function.
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <b>Trialled the feasibility of a networked surveillance system</b>{" "}
+              for generating and monitoring timely and actionable pathogen
+              agnostic data.
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <b>Evaluated the performance characteristics</b> of such a system
+              by comparison to conventional detections and trends identified
+              through existing surveillance.
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <b>Exercised the system using artificial constructs</b> of novel
+              pathogens to determine sensitivity and specificity of approach on
+              a background of normal cases.
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <b>
+                Designed sampling frameworks for pathogen-agnostic surveillance
+              </b>{" "}
+              of respiratory, emerging, and imported infections.
+            </ListGroup.Item>
+          </ListGroup>
+        </Section>
+        <Section title="Press Releases">
+          <ListGroup>
+            <ListGroup.Item>
+              <PressRelease
+                date="30th January 2025"
+                title="UKHSA launches new metagenomic surveillance for health security"
+                url="https://www.gov.uk/government/news/ukhsa-launches-new-metagenomic-surveillance-for-health-security"
+              />
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <PressRelease
+                date="5th November 2024"
+                title="UK to create world-first 'early warning system' for pandemics"
+                url="https://www.gov.uk/government/news/uk-to-create-world-first-early-warning-system-for-pandemics"
+              />
+            </ListGroup.Item>
+          </ListGroup>
+        </Section>
       </Stack>
-    </form>
+    </Container>
   );
 }
 
