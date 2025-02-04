@@ -22,7 +22,10 @@ jobs:
       - name: Build React App
         run: npm run build
 
+      - name: Identify to git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
