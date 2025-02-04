@@ -24,8 +24,8 @@ jobs:
 
       - name: Identify to git
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
