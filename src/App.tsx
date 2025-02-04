@@ -66,7 +66,7 @@ function PressRelease(props: { date: string; title: string; url: string }) {
 
 function App() {
   return (
-    <Container className="mSCAPE py-5">
+    <Container className="mSCAPE py-3">
       <Row className="justify-content-md-center">
         <Col lg={9}>
           <Stack gap={3}>
